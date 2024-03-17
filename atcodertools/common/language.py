@@ -131,6 +131,18 @@ PYTHON = Language(
     exec_filename="{filename}.pyc"
 )
 
+PYPY = Language(
+    name="pypy",
+    display_name="Python (PyPy)",
+    extension="py",
+    submission_lang_pattern=re.compile(".*Python \\(PyPy .*"),
+    default_code_generator=python.main,
+    default_template_path=get_default_template_path('py'),
+    compile_command="pypy3 -mpy_compile {filename}.py",
+    test_command="pypy3 {filename}.py",
+    exec_filename="{filename}.pyc"
+)
+
 DLANG = Language(
     name="d",
     display_name="D",
@@ -205,5 +217,5 @@ JULIA = Language(
     exec_filename="{filename}.jl"
 )
 
-ALL_LANGUAGES = [CPP, JAVA, RUST, PYTHON, NIM, DLANG, CSHARP, SWIFT, GO, JULIA]
+ALL_LANGUAGES = [CPP, JAVA, RUST, PYTHON, NIM, DLANG, CSHARP, SWIFT, GO, JULIA, PYPY]
 ALL_LANGUAGE_NAMES = [lang.display_name for lang in ALL_LANGUAGES]
